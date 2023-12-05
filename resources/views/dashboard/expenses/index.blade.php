@@ -4,7 +4,7 @@
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
     <h2>Section title</h2>
-    <a href="{{ route('expenses.create') }}" class="btn btn-dark">Add New</a>
+    <a href="{{ route('expenses.create') }}" class="btn btn-dark my-3">Add New</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -13,9 +13,8 @@
                     <th scope="col">Slug</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Date</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Created At</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -26,7 +25,6 @@
                     <td>{{ $row->slug }}</td>
                     <td>Rp. {{ number_format((float)$row->amount, 0, ',', '.') }}</td>
                     <td>{{ $row->description }}</td>
-                    <td>{{ $row->date }}</td>
                     <td>{{ $row->category }}</td>
                     <td>{{ $row->date }}</td>
                     <td>

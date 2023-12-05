@@ -51,8 +51,14 @@
             </div>
             <div class="col">
                 <label for="" class="label-control">Category</label>
-                <input type="text" class="form-control @error('category') is-invalid @enderror" name="category"
-                    value="{{ old('category') }}">
+                <select name="category" class="form-control @error('category') is-invalid @enderror">
+                    <option value="">Select Category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ $category->name }}" {{ old('category')==$category->name ? 'selected' : '' }}>
+                        {{ $category->name }}
+                    </option>
+                    @endforeach
+                </select>
                 @error('category')
                 <div class="alert alert-danger mt-2">
                     {{ $message }}

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use App\Models\Expenses;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -27,6 +29,7 @@ class ExpensesController extends Controller
     {
         $data = [
             'title' => 'Create',
+            'categories' => Category::get(),
         ];
         return view('dashboard.expenses.create', $data);
     }
@@ -69,7 +72,8 @@ class ExpensesController extends Controller
     {
         $data = [
             'title' => 'Edit',
-            'expenses' => Expenses::where('slug', $slug)->firstOrFail()
+            'expenses' => Expenses::where('slug', $slug)->firstOrFail(),
+            'categories' => Category::get(),
         ];
         return view('dashboard.expenses.edit', $data);
     }
