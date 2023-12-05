@@ -23,15 +23,15 @@ class Expenses extends Model
 
     protected static function boot()
     {
-    parent::boot();
-    static::creating(function ($expenses) {
-        $originalSlug = $slug = Str::slug($expenses->title);
-        $count = 1;
-        while (static::where('slug', $slug)->exists()) {
-            $slug = $originalSlug . '-' . $count;
-            $count++;
-        }
-        $expenses->slug = $slug;
-    });
-}
+        parent::boot();
+        static::creating(function ($expenses) {
+            $originalSlug = $slug = Str::slug($expenses->title);
+            $count = 1;
+            while (static::where('slug', $slug)->exists()) {
+                $slug = $originalSlug . '-' . $count;
+                $count++;
+            }
+            $expenses->slug = $slug;
+        });
+    }
 }

@@ -11,9 +11,13 @@ class CategoryController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $data = [
+            'title' => 'Categories',
+            'categories' => Category::get()
+        ];
+        return view('dashboard.category.index', $data);
     }
 
     /**
@@ -27,9 +31,19 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'description' => 'required|min:10'
+        ]);
+
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('category.index');
     }
 
     /**

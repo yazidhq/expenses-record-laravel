@@ -15,6 +15,13 @@
                     Expenses
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'category') ? 'active' : '' }}"
+                    href="{{ route('category.index') }}">
+                    <span data-feather="file"></span>
+                    Category
+                </a>
+            </li>
         </ul>
     </div>
 </nav>

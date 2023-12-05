@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\HomeController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,5 +24,5 @@ Route::get('/', function () {
 Route::resource('/dashboard', HomeController::class);
 
 Route::resource('/expenses', ExpensesController::class);
-Route::resource('/expenses/{expenses}', ExpensesController::class);
 
+Route::resource('/category', CategoryController::class);
