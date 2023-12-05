@@ -34,13 +34,33 @@
 
     @foreach ($categories as $category)
     <div class="d-inline-block">
-        <form action="" method="POST">
-            @method('DELETE')
-            {{-- create pop-up for detail and delete button --}}
-            <button class="btn btn-outline-secondary">
-                {{ $category->name }}
-            </button>
-        </form>
+        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+            data-bs-target="#categoryModal{{ $category->id }}">
+            {{ $category->name }}
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="categoryModal{{ $category->id }}" tabindex="-1" aria-labelledby="categoryModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="categoryModalLabel">{{ $category->name }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Description: {{ $category->description }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <form action="{{ route('category.destroy', $category->slug) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     @endforeach
 
