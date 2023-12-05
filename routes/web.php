@@ -1,10 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
-use App\Http\Controllers\HomeController;
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginRegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +21,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/dashboard', HomeController::class);
+Route::resource('/expenses', ExpensesController::class)->middleware('auth');
 
-Route::resource('/expenses', ExpensesController::class);
+Route::resource('/category', CategoryController::class)->middleware('auth');
 
-Route::resource('/category', CategoryController::class);
+Route::controller(LoginRegisterController::class)->group(function() {
+    Route::get('/register', 'register')->name('register');
+    Route::post('/store', 'store')->name('store');
+    Route::get('/login', 'login')->name('login');
+    Route::post('/authenticate', 'authenticate')->name('authenticate');
+    Route::get('/dashboard', 'dashboard')->name('dashboard');
+    Route::post('/logout', 'logout')->name('logout');
+});

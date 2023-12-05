@@ -17,7 +17,7 @@ class ExpensesController extends Controller
     {
         $data = [
             'title' => 'Expenses',
-            'expenses' => Expenses::all()
+            'expenses' => Expenses::where('user_id', auth()->user()->id)->get()
         ];
         return view('dashboard.expenses.index', $data);
     }
@@ -40,19 +40,20 @@ class ExpensesController extends Controller
     public function store(Request $request) :RedirectResponse
     {
         $this->validate($request, [
+            'category_id' => 'required',
             'title' => 'required',
             'amount' => 'required',
             'description' => 'required|min:5',
             'date' => 'required',
-            'category' => 'required'
         ]);
 
         Expenses::create([
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
             'title' => $request->title,
             'amount' => $request->amount,
             'description' => $request->description,
             'date' => $request->date,
-            'category' => $request->category,
         ]);
 
         return redirect()->route('expenses.index');
@@ -88,11 +89,12 @@ class ExpensesController extends Controller
         ]);
         $expenses = Expenses::where('slug', $slug)->firstOrFail();
         $expenses->update([
+            'user_id' => auth()->user()->id,
+            'category_id' => $request->category_id,
             'title' => $request->title,
             'amount' => $request->amount,
             'description' => $request->description,
             'date' => $request->date,
-            'category' => $request->category,
         ]);
         return redirect()->route('expenses.index');
     }

@@ -15,7 +15,7 @@ class CategoryController extends Controller
     {
         $data = [
             'title' => 'Categories',
-            'categories' => Category::get()
+            'categories' => Category::where('user_id', auth()->user()->id)->get()
         ];
         return view('dashboard.category.index', $data);
     }
@@ -39,6 +39,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create([
+            'user_id' => auth()->user()->id,
             'name' => $request->name,
             'description' => $request->description,
         ]);

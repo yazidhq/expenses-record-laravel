@@ -25,7 +25,7 @@
                     <td>{{ $row->slug }}</td>
                     <td>Rp. {{ number_format((float)$row->amount, 0, ',', '.') }}</td>
                     <td>{{ $row->description }}</td>
-                    <td>{{ $row->category }}</td>
+                    <td>{{ $row->category->name }}</td>
                     <td>{{ $row->date }}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-start">

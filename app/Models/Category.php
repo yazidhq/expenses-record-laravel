@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Expenses;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'name',
         'slug',
         'description',
@@ -28,4 +33,14 @@ class Category extends Model
             $category->slug = $slug;
         }); 
     }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function expenses(): HasOne
+    {
+        return $this->hasOne(Expenses::class);
+    }  
 }

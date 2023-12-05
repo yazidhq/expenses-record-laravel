@@ -52,15 +52,15 @@
             </div>
             <div class="col">
                 <label for="" class="label-control">Category</label>
-                <select name="category" class="form-control @error('category') is-invalid @enderror">
-                    <option hidden value="{{ $expenses->category }}">{{ $expenses->category }}</option>
+                <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                    <option hidden value="{{ $expenses->category_id }}">{{ $expenses->category->name }}</option>
                     @foreach ($categories as $category)
-                    <option value="{{ $category->name }}" {{ old('category')==$category->name ? 'selected' : '' }}>
+                    <option value="{{ $category->id }}" {{ old('category_id')==$category->id ? 'selected' : '' }}>
                         {{ $category->name }}
                     </option>
                     @endforeach
                 </select>
-                @error('category')
+                @error('category_id')
                 <div class="alert alert-danger mt-2">
                     {{ $message }}
                 </div>

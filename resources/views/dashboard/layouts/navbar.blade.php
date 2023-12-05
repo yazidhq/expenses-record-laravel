@@ -3,7 +3,7 @@
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'dashboard') ? 'active' : '' }}"
-                    aria-current="page" href="{{ route('dashboard.index') }}">
+                    aria-current="page" href="{{ route('dashboard') }}">
                     <span data-feather="home"></span>
                     Dashboard
                 </a>
