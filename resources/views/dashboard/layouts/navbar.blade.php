@@ -4,22 +4,30 @@
             <li class="nav-item">
                 <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'dashboard') ? 'active' : '' }}"
                     aria-current="page" href="{{ route('dashboard') }}">
-                    <span data-feather="home"></span>
+                    <i class="bi bi-house-door"></i>
                     Dashboard
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'expenses') ? 'active' : '' }}"
                     href="{{ route('expenses.index') }}">
-                    <span data-feather="file"></span>
+                    <i class="bi bi-file-bar-graph"></i>
                     Expenses
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'category') ? 'active' : '' }}"
                     href="{{ route('category.index') }}">
-                    <span data-feather="file"></span>
+                    <i class="bi bi-tags"></i>
                     Category
+                </a>
+            </li>
+            <hr>
+            <li class="nav-item">
+                <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'user') ? 'active' : '' }}"
+                    href="{{ route('user.index') }}">
+                    <i class="bi bi-person-video2"></i>
+                    Profile
                 </a>
             </li>
         </ul>

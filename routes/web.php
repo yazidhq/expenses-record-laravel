@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\Auth\LoginRegisterController;
@@ -24,6 +25,8 @@ Route::get('/', function () {
 Route::resource('/expenses', ExpensesController::class)->middleware('auth');
 
 Route::resource('/category', CategoryController::class)->middleware('auth');
+
+Route::resource('/user', UserController::class)->middleware('auth');
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
