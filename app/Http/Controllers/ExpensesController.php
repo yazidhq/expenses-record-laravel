@@ -1,19 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Expenses;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
-use Nette\Schema\Expect;
 
 class ExpensesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
         $data = [
             'title' => 'Expenses',
@@ -25,7 +23,7 @@ class ExpensesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         $data = [
             'title' => 'Create',
@@ -67,7 +65,7 @@ class ExpensesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $slug)
+    public function edit(string $slug): View
     {
         $data = [
             'title' => 'Edit',
