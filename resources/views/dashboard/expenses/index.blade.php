@@ -26,7 +26,7 @@
                     <td>{{ $row->category->name }}</td>
                     <td>{{ $row->date }}</td>
                     <td>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                        <div class="d-md-flex justify-content-md-start">
                             <a href="{{ route('expenses.edit', $row->slug) }}" class="btn btn-sm btn-warning"><i
                                     class="bi bi-pencil-square"></i></a>
                             <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST">
