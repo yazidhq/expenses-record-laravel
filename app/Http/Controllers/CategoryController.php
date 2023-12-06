@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Category;
+use App\Models\Expenses;
 
 class CategoryController extends Controller
 {
@@ -77,7 +78,9 @@ class CategoryController extends Controller
     public function destroy(string $slug): RedirectResponse
     {
         $category = Category::where('slug', $slug)->firstOrFail();
+        $expenses = Expenses::where('category_id', $category->id);
         $category->delete();
+        $expenses->delete();
         return redirect()->route('category.index');
     }
 }

@@ -27,16 +27,23 @@
                                 </button>
                                 <div class="d-flex justify-content-between text-center mt-5 mb-2">
                                     <div data-aos="fade-up" data-aos-delay="100">
-                                        <p class="mb-2 h5">8471</p>
+                                        <p class="mb-2 h5">Rp. {{number_format((float)$income->sum('amount'), 0, ',',
+                                            '.')
+                                            }}</p>
                                         <p class="text-muted mb-0">Monthly Income</p>
                                     </div>
                                     <div class="px-3" data-aos="fade-up" data-aos-delay="150">
-                                        <p class="mb-2 h5">8512</p>
+                                        <p class="mb-2 h5">Rp. {{ number_format((float)$expenses->sum('amount'), 0, ',',
+                                            '.')
+                                            }}</p>
                                         <p class="text-muted mb-0">Monthly Expenses</p>
                                     </div>
                                     <div data-aos="fade-up" data-aos-delay="200">
-                                        <p class="mb-2 h5">4751</p>
-                                        <p class="text-muted mb-0">My Category</p>
+                                        <p class="mb-2 h5">Rp. {{ number_format((float)$todayExpenses->sum('amount'), 0,
+                                            ',',
+                                            '.')
+                                            }}</p>
+                                        <p class="text-muted mb-0">Today Expenses</p>
                                     </div>
                                 </div>
                             </div>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Income;
+use App\Models\Category;
+use App\Models\Expenses;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
@@ -13,9 +17,12 @@ class UserController extends Controller
     public function index()
     {
         $data = [
-            'title' => Str::ucfirst(auth()->user()->name) . "'s Profile"
+            'title' => Str::ucfirst(auth()->user()->name) . "'s Profile",
+            'income' => Income::where('user_id', auth()->user()->id)->get(),
+            'expenses' => Expenses::where('user_id', auth()->user()->id)->get(),
+            'todayExpenses' => Expenses::where('user_id', auth()->user()->id)->whereDate('date', Carbon::today())
         ];
-        return view('dashboard.profile.index', $data);
+        return view("dashboard.profile.index", $data);
     }
 
     /**

@@ -89,8 +89,10 @@ class IncomeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $slug)
     {
-        //
+        $income = Income::where('slug', $slug)->firstOrFail();
+        $income->delete();
+        return redirect()->route('income.index');
     }
 }
