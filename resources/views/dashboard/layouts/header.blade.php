@@ -5,12 +5,4 @@
     data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="navbar-nav">
-    <div class="nav-item text-nowrap">
-      <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button class="nav-link px-3 btn btn-dark">Sign out</button>
-      </form>
-    </div>
-  </div>
 </header>

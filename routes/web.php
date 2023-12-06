@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\Auth\LoginRegisterController;
@@ -21,6 +21,8 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('/income', IncomeController::class)->middleware('auth');
 
 Route::resource('/expenses', ExpensesController::class)->middleware('auth');
 

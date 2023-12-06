@@ -9,6 +9,13 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'income') ? 'active' : '' }}"
+                    href="{{ route('income.index') }}">
+                    <i class="bi bi-cash-stack"></i>
+                    Incomes
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ Str::startsWith(request()->route()->getName(), 'expenses') ? 'active' : '' }}"
                     href="{{ route('expenses.index') }}">
                     <i class="bi bi-file-bar-graph"></i>
@@ -30,6 +37,16 @@
                     Profile
                 </a>
             </li>
+            <li class="nav-item">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button class="btn btn-link text-dark text-decoration-none">
+                        <i class="bi bi-box-arrow-left"></i>
+                        Sign out
+                    </button>
+                </form>
+            </li>
+
         </ul>
     </div>
 </nav>
