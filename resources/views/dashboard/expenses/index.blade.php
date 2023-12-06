@@ -10,7 +10,6 @@
             <thead>
                 <tr>
                     <th scope="col">Title</th>
-                    <th scope="col">Slug</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Description</th>
                     <th scope="col">Category</th>
@@ -22,7 +21,6 @@
                 @foreach ($expenses as $row)
                 <tr>
                     <td>{{ $row->title }}</td>
-                    <td>{{ $row->slug }}</td>
                     <td>Rp. {{ number_format((float)$row->amount, 0, ',', '.') }}</td>
                     <td>{{ $row->description }}</td>
                     <td>{{ $row->category->name }}</td>

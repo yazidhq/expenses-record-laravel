@@ -10,7 +10,6 @@
             <thead>
                 <tr>
                     <th scope="col">Title</th>
-                    <th scope="col">Slug</th>
                     <th scope="col">Amount</th>
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
@@ -18,18 +17,17 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @foreach ($expenses as $row)
+                @foreach ($income as $row)
                 <tr>
                     <td>{{ $row->title }}</td>
-                    <td>{{ $row->slug }}</td>
                     <td>Rp. {{ number_format((float)$row->amount, 0, ',', '.') }}</td>
                     <td>{{ $row->description }}</td>
                     <td>{{ $row->date }}</td>
                     <td>
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                            <a href="{{ route('expenses.edit', $row->slug) }}" class="btn btn-sm btn-warning"><i
+                        <div class="d-md-flex">
+                            <a href="{{ route('income.edit', $row->slug) }}" class="btn btn-sm btn-warning"><i
                                     class="bi bi-pencil-square"></i></a>
-                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST">
+                            <form action="{{ route('income.destroy', $row->slug) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-sm btn-danger"><i class="bi bi-trash3"></i></button>
@@ -37,7 +35,7 @@
                         </div>
                     </td>
                 </tr>
-                @endforeach --}}
+                @endforeach
 
 
             </tbody>
