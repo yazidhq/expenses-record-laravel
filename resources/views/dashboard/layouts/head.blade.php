@@ -11,6 +11,9 @@
   <!-- Bootstrap core CSS -->
   <link href="{{ asset('/dist/css/bootstrap.min.css') }}" rel="stylesheet" />
 
+  {{-- Anime on scroll --}}
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;

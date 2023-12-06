@@ -11,3 +11,9 @@
   integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
   integrity="sha384-eM68JKFL6MZxhlW3lO5ljT9S0+wn50bB40DdT7KEuv4CpJ0V4+QFq70Z6V4N9lrD" crossorigin="anonymous"></script>
+
+{{-- anime on scroll --}}
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
