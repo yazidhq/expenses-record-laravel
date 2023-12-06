@@ -51,7 +51,6 @@
                         <p>Description: {{ $category->description }}</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <form action="{{ route('category.destroy', $category->slug) }}" method="POST">
                             @csrf
                             @method('DELETE')

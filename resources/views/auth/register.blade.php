@@ -49,7 +49,7 @@
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Register">
+                        <input type="submit" class="col-md-3 offset-md-5 btn btn-dark" value="Register">
                     </div>
 
                 </form>
