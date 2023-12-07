@@ -22,7 +22,7 @@ class UserController extends Controller
             'title' => Str::ucfirst(auth()->user()->name) . "'s Profile",
             'monthlyIncome' => Income::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
             'monthlyExpenses' => Expenses::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
-            'todayExpenses' => Expenses::where('user_id', auth()->user()->id)->whereDate('date', Carbon::today())
+            'todayExpenses' => Expenses::where('user_id', auth()->user()->id)->whereDate('date', Carbon::today())->get()
         ];
         return view("dashboard.profile.index", $data);
     }

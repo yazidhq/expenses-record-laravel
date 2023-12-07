@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Expenses;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Http\RedirectResponse;
 
 class ExpensesController extends Controller
 {
@@ -17,7 +18,10 @@ class ExpensesController extends Controller
     {
         $data = [
             'title' => 'Expenses',
-            'expenses' => Expenses::where('user_id', auth()->user()->id)->get()
+            'expenses' => Expenses::where('user_id', auth()->user()->id)->get(),
+            'todayExpenses' => Expenses::where('user_id', auth()->user()->id)->whereDate('date', Carbon::today())->get(),
+            'monthlyExpenses' => Expenses::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
+            'yearlyExpenses' => Expenses::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->get(),
         ];
         return view('dashboard.expenses.index', $data);
     }

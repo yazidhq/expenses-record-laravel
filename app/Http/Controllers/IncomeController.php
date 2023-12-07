@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Income;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class IncomeController extends Controller
 {
@@ -16,7 +17,8 @@ class IncomeController extends Controller
     {
         $data = [
             'title' => 'Income',
-            'income' => Income::where('user_id', auth()->user()->id)->get()
+            'monthlyIncome' => Income::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
+            'yearlyIncome' => Income::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->get(),
         ];
         return view('dashboard.income.index', $data);
     }
