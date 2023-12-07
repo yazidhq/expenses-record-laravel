@@ -26,6 +26,11 @@
                                     data-bs-target="#userAva{{ auth()->user()->id }}">
                                     Edit Profile
                                 </button>
+                                @error('avatar')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
                                 <!-- Modal Edit Profile -->
                                 <div class="modal fade" id="userAva{{ auth()->user()->id }}" tabindex="-1"
                                     aria-labelledby="userAvaLabel" aria-hidden="true">

@@ -43,7 +43,7 @@ class LoginRegisterController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
 
-        $validate['avatar'] = 'ava-default.jpg';
+        $validate['avatar'] = 'default-ava.png';
         User::create($validate);
 
         $credentials = $request->only('email', 'password');

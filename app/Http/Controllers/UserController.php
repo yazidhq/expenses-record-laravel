@@ -9,6 +9,7 @@ use App\Models\Expenses;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -62,35 +63,37 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-{
-    $user = User::findOrFail($id);
-
-    // Check if image is uploaded
-    if ($request->hasFile('avatar')) {
-
-        // Upload new image
-        $image = $request->file('avatar');
-        $imageName = now()->timestamp . '_' . $image->getClientOriginalName();
-        $image->storeAs('public/image', $imageName);
-
-        // Update user with new image
-        $user->update([
-            'avatar' => $imageName,
-            'name' => $request->name,
-            'email' => $request->email,
+    {
+        $this->validate($request, [
+            'avatar' => 'image|mimes:jpeg,jpg,png|max:2048',
         ]);
-    } else {
 
-        // Update user without image
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
+        $user = User::findOrFail($id);
+
+        if ($request->hasFile('avatar')) {
+            $image = $request->file('avatar');
+            $imageName = now()->timestamp . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/image', $imageName);
+
+            // Check if the old avatar is not the default avatar
+            if ($user->avatar !== 'default-ava.png') {
+                Storage::delete('public/image/' . $user->avatar);
+            }
+
+            $user->update([
+                'avatar' => $imageName,
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+        } else {
+            $user->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+        }
+
+        return redirect()->route('user.index');
     }
-
-    return redirect()->route('user.index');
-}
-
 
     /**
      * Remove the specified resource from storage.
