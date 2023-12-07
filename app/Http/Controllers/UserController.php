@@ -20,8 +20,8 @@ class UserController extends Controller
     {
         $data = [
             'title' => Str::ucfirst(auth()->user()->name) . "'s Profile",
-            'income' => Income::where('user_id', auth()->user()->id)->get(),
-            'expenses' => Expenses::where('user_id', auth()->user()->id)->get(),
+            'monthlyIncome' => Income::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
+            'monthlyExpenses' => Expenses::where('user_id', auth()->user()->id)->whereYear('date', Carbon::now()->year)->whereMonth('date', Carbon::now()->month)->get(),
             'todayExpenses' => Expenses::where('user_id', auth()->user()->id)->whereDate('date', Carbon::today())
         ];
         return view("dashboard.profile.index", $data);

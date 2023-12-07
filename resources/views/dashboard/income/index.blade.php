@@ -3,7 +3,7 @@
 @section('content')
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
-    <h2>Section title</h2>
+    <h2>Income</h2>
     <a href="{{ route('income.create') }}" class="btn btn-dark my-3">Add New</a>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
