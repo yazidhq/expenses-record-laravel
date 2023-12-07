@@ -59,7 +59,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST">
+                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST"
+                                                class="deleteForm">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-danger rounded-0"><i
@@ -129,7 +130,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST">
+                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST"
+                                                class="deleteForm">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-danger rounded-0"><i
@@ -199,7 +201,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST">
+                                            <form action="{{ route('expenses.destroy', $row->slug) }}" method="POST"
+                                                class="deleteForm">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="btn btn-sm btn-danger rounded-0"><i

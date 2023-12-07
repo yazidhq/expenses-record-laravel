@@ -51,7 +51,8 @@
                         <p>Description: {{ $category->description }}</p>
                     </div>
                     <div class="modal-footer">
-                        <form action="{{ route('category.destroy', $category->slug) }}" method="POST">
+                        <form action="{{ route('category.destroy', $category->slug) }}" method="POST"
+                            class="deleteForm">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">Delete</button>
