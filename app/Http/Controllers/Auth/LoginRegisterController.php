@@ -37,17 +37,14 @@ class LoginRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $this->validate($request, [
+        $validate = $this->validate($request, [
             'name' => 'required|string|max:250',
             'email' => 'required|email|max:250|unique:users',
             'password' => 'required|min:8|confirmed'
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password)
-        ]);
+        $validate['avatar'] = 'ava-default.jpg';
+        User::create($validate);
 
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Income;
 use App\Models\Category;
 use App\Models\Expenses;
@@ -61,9 +62,35 @@ class UserController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
-        //
+{
+    $user = User::findOrFail($id);
+
+    // Check if image is uploaded
+    if ($request->hasFile('avatar')) {
+
+        // Upload new image
+        $image = $request->file('avatar');
+        $imageName = now()->timestamp . '_' . $image->getClientOriginalName();
+        $image->storeAs('public/image', $imageName);
+
+        // Update user with new image
+        $user->update([
+            'avatar' => $imageName,
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+    } else {
+
+        // Update user without image
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
     }
+
+    return redirect()->route('user.index');
+}
+
 
     /**
      * Remove the specified resource from storage.
