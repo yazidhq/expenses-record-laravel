@@ -37,6 +37,14 @@
                     Profile
                 </a>
             </li>
+            @if (auth()->user()->role == 'admin')
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.index') }}">
+                    <i class="bi bi-person-fill-lock"></i>
+                    Admin
+                </a>
+            </li>
+            @endif
             <li class="nav-item">
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf

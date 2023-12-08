@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginRegisterController extends Controller
 {
@@ -26,7 +27,6 @@ class LoginRegisterController extends Controller
         $data = [
             'title' => 'Register'
         ];
-        
         return view('auth.register', $data);
     }
 
@@ -80,14 +80,12 @@ class LoginRegisterController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
-            if (auth()->user()->role == 'admin'){
+            if(auth()->user()->role == 'admin'){
                 $request->session()->regenerate();
                 return redirect()->route('admin.index');
             }
-            elseif(auth()->user()->role == 'user'){
-                $request->session()->regenerate();
-                return redirect()->route('dashboard');
-            } 
+            $request->session()->regenerate();
+            return redirect()->route('dashboard');
         }
 
         return back()->withErrors(['email' => 'Your provided credentials do not match in our records.',])->onlyInput('email');
@@ -99,19 +97,12 @@ class LoginRegisterController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function dashboard(){
+        $data = [
+            'title' => 'Dashboard'
+        ];
+
         if(Auth::check()){
-            if (auth()->user()->role == 'admin'){
-                $data = [
-                    'title' => 'Admin'
-                ];
-                return view('admin.index', $data);
-            }
-            elseif(auth()->user()->role == 'user'){
-                $data = [
-                    'title' => 'Dashboard'
-                ];
-                return view('dashboard.index', $data);
-            }
+            return view('dashboard.index', $data);
         }
 
         return redirect()->route('login')->withErrors(['email' => 'Please login to access the dashboard.'])->onlyInput('email');

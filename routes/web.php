@@ -23,14 +23,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware(['auth', 'checkRole:admin'])->group(function () {
+    Route::resource('/admin', AdminController::class);
+});
 
-Route::resource('/income', IncomeController::class)->middleware('auth');
-
-Route::resource('/expenses', ExpensesController::class)->middleware('auth');
-
-Route::resource('/category', CategoryController::class)->middleware('auth');
-
-Route::resource('/user', UserController::class)->middleware('auth');
+Route::resource('/income', IncomeController::class);
+Route::resource('/expenses', ExpensesController::class);
+Route::resource('/category', CategoryController::class);
+Route::resource('/user', UserController::class);
 
 Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/register', 'register')->name('register');
@@ -40,5 +40,3 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
-
-Route::resource('/admin', AdminController::class)->middleware('auth');

@@ -14,9 +14,6 @@ class AdminController extends Controller
         $data = [
             'title' => 'Admin'
         ];
-        if(auth()->user()->role == 'user'){
-            return redirect()->route('dashboard');
-        }
         return view('admin.index', $data);
     }
 
