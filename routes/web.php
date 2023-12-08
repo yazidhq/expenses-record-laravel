@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
@@ -22,6 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::resource('/income', IncomeController::class)->middleware('auth');
 
 Route::resource('/expenses', ExpensesController::class)->middleware('auth');
@@ -38,3 +40,5 @@ Route::controller(LoginRegisterController::class)->group(function() {
     Route::get('/dashboard', 'dashboard')->name('dashboard');
     Route::post('/logout', 'logout')->name('logout');
 });
+
+Route::resource('/admin', AdminController::class)->middleware('auth');
