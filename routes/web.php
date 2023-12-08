@@ -21,7 +21,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::resource('/admin', AdminController::class);
