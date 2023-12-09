@@ -1,4 +1,3 @@
-test
 <form action="{{ route('logout') }}" method="POST">
     @csrf
     <button class="btn btn-link text-dark text-decoration-none">
