@@ -38,18 +38,16 @@
         </div>
         @enderror
 
-        <div class="row my-3">
-            <label for="" class="label-control">Date</label>
-            <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
-                value="{{ old('date') }}">
-            @error('date')
-            <div class="alert alert-danger mt-2">
-                {{ $message }}
-            </div>
-            @enderror
+        <label for="" class="label-control mt-3">Date</label>
+        <input type="date" class="form-control @error('date') is-invalid @enderror" name="date"
+            value="{{ old('date') }}">
+        @error('date')
+        <div class="alert alert-danger mt-2">
+            {{ $message }}
         </div>
+        @enderror
 
-        <button type="submit" class="btn btn-dark">Submit</button>
+        <button type="submit" class="btn btn-dark mt-3">Submit</button>
     </form>
 </main>
 

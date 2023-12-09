@@ -1,7 +1,7 @@
-<form action="{{ route('logout') }}" method="POST">
-    @csrf
-    <button class="btn btn-link text-dark text-decoration-none">
-        <i class="bi bi-box-arrow-left"></i>
-        Sign out
-    </button>
-</form>
+@extends('admin.layouts.template')
+
+@section('admin')
+
+<h1 class="mt-3 text-center">Welcome to {{ Str::ucfirst(auth()->user()->name) }} page</h1>
+
+@stop

@@ -2,11 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\Auth\LoginRegisterController;
+
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +27,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'checkRole:admin'])->group(function () {
     Route::resource('/admin', AdminController::class);
+    Route::resource('/adminuser', AdminUserController::class);
 });
 
 Route::resource('/income', IncomeController::class);
