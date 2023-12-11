@@ -2,7 +2,7 @@
 <nav class="navbar navbar-light bg-light border-top navbar-expand fixed-top">
   <ul class="navbar-nav nav-justified w-100">
     <li class="nav-item">
-      <a href="#" class="nav-link text-start mx-1">
+      <a href="{{ route('user.index') }}" class="nav-link text-start mx-1">
         {{ Str::upper(auth()->user()->name) }}
       </a>
     </li>

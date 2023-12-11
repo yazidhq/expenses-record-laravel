@@ -72,7 +72,9 @@ class AdminUserController extends Controller
     {
         $user = User::where('id', $id)->firstOrFail();
         $user->delete();
-        Storage::delete('public/image/' . $user->avatar);
+        if ($user->avatar !== 'default-ava.png') {
+            Storage::delete('public/image/' . $user->avatar);
+        }
         $user->category()->delete(); 
         $user->expenses()->delete();
         $user->income()->delete();  

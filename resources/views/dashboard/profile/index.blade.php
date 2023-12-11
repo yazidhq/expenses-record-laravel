@@ -18,7 +18,7 @@
                                     <img src="{{ asset('storage/image/' . auth()->user()->avatar) }}"
                                         class="rounded-circle img-fluid" style="width: 100px;" />
                                 </div>
-                                <h4 class="mb-2" data-aos="fade-up" data-aos-offset="500">{{ auth()->user()->name}}
+                                <h4 class="mb-2" data-aos="fade-up" data-aos-delay="100">{{ auth()->user()->name}}
                                 </h4>
                                 <p class="text-muted mb-4" data-aos="fade-up" data-aos-delay="100">{{
                                     auth()->user()->email}}</p>
