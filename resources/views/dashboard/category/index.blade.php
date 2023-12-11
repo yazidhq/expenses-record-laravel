@@ -3,30 +3,26 @@
 @section('content')
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
-    <h2>Category</h2>
+    <h2 class="text-center mt-3">Expenses Categories</h2>
     <form action="{{ route('category.store') }}" class="my-3" method="POST">
         @csrf
         <div class="row">
-            <div class="col">
-                <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Add category.."
-                    value="{{ old('name') }}" name="name">
-                @error('name')
-                <div class="alert alert-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Category Name" aria-label="Category Name" value="{{ old('name') }}" name="name">
+                <input type="text" class="form-control" placeholder="Description" aria-label="Description" value="{{ old('description') }}" name="description">
             </div>
-            <div class="col">
-                <input type="text" class="form-control @error('description') is-invalid @enderror"
-                    placeholder="Description of category.." value="{{ old('description') }}" name="description">
-                @error('description')
-                <div class="alert alert-danger mt-2">
-                    {{ $message }}
-                </div>
-                @enderror
+            @error('name')
+            <div class="alert alert-danger">
+                {{ $message }}
             </div>
-            <div class="col">
-                <button type="submit" class="btn btn-dark">Submit</button>
+            @enderror
+            @error('description')
+            <div class="alert alert-danger">
+                {{ $message }}
+            </div>
+            @enderror
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-outline-dark btn-sm">Submit</button>
             </div>
         </div>
     </form>

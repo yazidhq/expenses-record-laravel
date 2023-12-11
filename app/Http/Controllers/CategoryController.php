@@ -36,7 +36,7 @@ class CategoryController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'description' => 'required|min:10'
+            'description' => 'required|min:3'
         ]);
 
         Category::create([

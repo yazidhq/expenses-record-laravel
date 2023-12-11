@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Models\Expenses;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -39,8 +39,8 @@ class Category extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function expenses(): HasOne
+    public function expenses(): HasMany
     {
-        return $this->hasOne(Expenses::class);
+        return $this->hasMany(Expenses::class);
     }  
 }

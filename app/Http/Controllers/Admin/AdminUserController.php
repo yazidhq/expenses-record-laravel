@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Expenses;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class AdminUserController extends Controller
 {
@@ -70,13 +71,11 @@ class AdminUserController extends Controller
     public function destroy(string $id)
     {
         $user = User::where('id', $id)->firstOrFail();
-        $category = Category::where('user_id', $id)->firstOrFail();
-        $expenses = Expenses::where('user_id', $id)->firstOrFail();
-        $income = Income::where('user_id', $id)->firstOrFail();
         $user->delete();
-        $category->delete();
-        $expenses->delete();
-        $income->delete();
+        Storage::delete('public/image/' . $user->avatar);
+        $user->category()->delete(); 
+        $user->expenses()->delete();
+        $user->income()->delete();  
         return redirect()->route('adminuser.index');
     }
 }

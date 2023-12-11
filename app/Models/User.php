@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Income;
 use App\Models\Category;
 use App\Models\Expenses;
 use Laravel\Sanctum\HasApiTokens;
@@ -47,6 +48,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function income(): HasMany
+    {
+        return $this->hasMany(Income::class);
+    }
 
     public function expenses(): HasMany
     {

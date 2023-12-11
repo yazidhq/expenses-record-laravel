@@ -3,8 +3,10 @@
 @section('content')
 
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
-    <h2>Income</h2>
-    <a href="{{ route('income.create') }}" class="btn btn-dark my-3">Add New</a>
+    <h2 class="text-center mt-3">Your Income</h2>
+    <div class="d-grid gap-2">
+        <a href="{{ route('income.create') }}" class="btn btn-outline-dark btn-sm my-3">Add New</a>
+    </div>
     <div class="accordion" id="accordionExample">
         <div class="accordion-item">
             <h2 class="accordion-header">

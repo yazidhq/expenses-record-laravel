@@ -6,7 +6,7 @@
 
   @include('dashboard.layouts.header')
 
-  <div class="container-fluid">
+  <div class="container-fluid mt-5">
     <div class="row">
 
       @include('dashboard.layouts.navbar')
