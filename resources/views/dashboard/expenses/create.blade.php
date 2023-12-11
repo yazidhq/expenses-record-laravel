@@ -2,7 +2,7 @@
 
 @section('content')
 
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-3">
+<main class="col-md-9 ms-sm-auto col-lg-12 px-md-4 mt-3">
     <h2>Section title</h2>
     <form action="{{ route('expenses.store') }}" method="POST">
         @csrf
